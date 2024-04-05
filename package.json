@@ -2,8 +2,10 @@
   "name": "web-tools-pdf",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "source-base/serverSide.js",
   "scripts": {
+    "start": "nodemon --inspect source-base/serverSide.js",
+    "watch" :"node-sass --watch source-base/Assest/SCSS/ --output source-base/Public/CSS/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,10 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
     "fs": "^0.0.1-security",
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
+    "node-sass": "^9.0.0",
     "nodemon": "^3.1.0"
   }
 }
