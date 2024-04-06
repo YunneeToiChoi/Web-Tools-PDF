@@ -14,7 +14,7 @@ start script in packet Json use nodemon to debug mode : "start" : "nodemon (--in
 
 morgan ( log ) npm i morgan  --save-dev 
  Template engineer : npm install express-handlebars ( dung de su dung html de dang hon trong node )
- structor : 
+# Structor
 source-base
 ├── Assest
     └── PAGES
@@ -28,7 +28,8 @@ source-base
 ├── Uploads
     ├── PDF
 
-
+Browser -> Middle ware ( router , dispatcher ) -> Controller -> model, views
+serverSide có Router truyền App(expressJs) -> main.router có function chạy các router con ( site router hoặc news router ) -> site router/news router -> controller ( có class function ) -> render/send ra index
 
 Nhớ customine lại structor Theo mô hình MVC theo ý riêng 
 FOLDER ghi hoa
@@ -40,3 +41,6 @@ SCSS file css draw convert into folder public become css {node-sass [options] <i
 KHÔNG BAO GIỜ CODE Ở CSS , HÃY VIẾT Ở SCSS VÀ SỬ DỤNG LỆNH NPM RUN WATCH (WATCH TỰ ĐỊNH DẠNG TRONG JSON SCRIPT ) NÓ SẼ TỰ CONVERT SCSS TO CSS, VÌ CSS LÀ VIEW RA, SCSS LÀ DRAW
 Vì mặc định là watching extensions: js,mjs,cjs,json chỉ lắng nghe các sự thay đổi từ file trên (nodemon)
 khi sử dụng các file css hay scss thì phải config thêm ( ở file nodemon.json)
+# FORM GET POST
+>> Dùng Query {name}, {method} {action} -> {Dispatcher} -> {Function Handler}
+

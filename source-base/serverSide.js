@@ -5,8 +5,16 @@ const port = 3000; // Cổng mà máy chủ sẽ lắng nghe
 // LIBRARIES SUPPORTED
 const morgan = require('morgan'); // log 
 const  { engine  }  = require('express-handlebars'); //structor file
+//CALL BASE
+const route = require('./Routers/main.router')
 //RUNNING SERVER SIDE 
 const app = express();
+//middle ware
+app.use(express.urlencoded({
+  extends: true
+})) // middleware
+app.use(express.json()) // middleware client -> server 
+/////
 //HTTP LOGGER
 app.use(morgan('combined'));
 // TEMPLATE ENGINE
@@ -18,8 +26,7 @@ app.set('view engine', 'hbs'); // ref 2 là name của thư viện đc gán tên
 app.set('views',path.join(__dirname, 'ASSEST/PAGES/Views')); // pointer default path file html
 // END TEMPLATE ENGINE
 
-app.get('/', (req, res) => {
-  res.render('home')
-});
+//Route
+route(app)
 // Khởi động máy chủ
 app.listen(port, () => console.log(`Máy chủ đang lắng nghe trên cổng ${port}`));
