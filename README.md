@@ -3,13 +3,13 @@ npm start
 npm run watch
 # Web-Tools-PDF
 Node js npm init -y
-library PDF npm install @pdf-lib/pdf-lib
+library PDF npm install --save pdf-lib ( document : https://github.com/YunneeToiChoi/pdf-lib/blob/master/README.md ) && (https://pdf-lib.js.org/docs/api/)
 express js npm install express multer --save
 pythons 
 live sever npm install nodemon --save-dev -> 
 trong file packed json
 nodemon npm i nodemon  --save-dev  ( debug mode )
-
+ Multer npm install multer
 start script in packet Json use nodemon to debug mode : "start" : "nodemon (--inspector if want debug) serverSide.js", ->> run thi npm start thoi, alway update khong can phai start again server 
 
 morgan ( log ) npm i morgan  --save-dev 

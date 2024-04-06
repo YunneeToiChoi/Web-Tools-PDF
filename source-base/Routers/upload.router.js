@@ -2,6 +2,10 @@ const express = require('express');
 const router =  express.Router();
 const uploadController = require('../App/Controllers/UploadsController');
 
-router.use('/processing',uploadController.processing)
-router.use('/',uploadController.upload)
-module.exports = router;
+// Route cho việc upload
+router.post('/', uploadController.upload);
+
+// Route cho trang chờ và tải xuốnggggg
+router.get('/wait', uploadController.wait);
+router.get('/wait/download', uploadController.download);
+module.exports = router;       
