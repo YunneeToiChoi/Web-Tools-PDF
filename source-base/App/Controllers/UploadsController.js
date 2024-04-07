@@ -20,50 +20,42 @@ class UploadsController {
                 console.error('Error uploading file:', err);
                 return res.status(500).send('Internal Server Error');
             }
-    
+        
             const pdfFilePath = req.file.path;
-    
+        
             try {
                 const pdfDoc = await PDFDocument.load(await fs.readFile(pdfFilePath));
                 const totalPages = pdfDoc.getPageCount();
-                const pagesToDelete = req.body.indexPage.split(',').map(page => parseInt(page.trim()));
-            
-                // Chuyển đổi chỉ mục của các trang từ 1-indexed sang 0-indexed
-                const adjustedIndexes = pagesToDelete.map(pageNumber => pageNumber-1);
-            
+                const pagesToDelete = req.body.indexPage.split(',').map(page => parseInt(page.trim()) - 1); // Chuyển đổi chỉ mục từ 1-indexed sang 0-indexed và lưu vào mảng
+        
                 // Kiểm tra xem có trang nào nằm ngoài phạm vi không
-                if (Math.max(...adjustedIndexes) >= totalPages || Math.min(...adjustedIndexes) < 0) {
+                if (pagesToDelete.some(pageNumber => pageNumber < 0 || pageNumber >= totalPages)) {
                     throw new Error('Chỉ mục trang không hợp lệ');
                 }
-            
-                // Sắp xếp lại các trang theo thứ tự tăng dần để đảm bảo xóa chúng theo đúng thứ tự
-                adjustedIndexes.sort((a, b) => a - b);
-            
-
-
-
-
-                
-                for (const pageNumber of adjustedIndexes) {
-                    pdfDoc.removePage(pageNumber);
-                    console.log(pageNumber,adjustedIndexes);
+        
+                // Sắp xếp lại các chỉ mục trang để đảm bảo xóa chúng theo đúng thứ tự
+                pagesToDelete.sort((a, b) => a - b);
+        
+                // Xóa các trang từ tài liệu PDF
+                for (let i = pagesToDelete.length - 1; i >= 0; i--) { // Lặp từ cuối mảng để tránh xóa sai trang do thay đổi chỉ mục
+                    pdfDoc.removePage(pagesToDelete[i]);
                 }
-            
+        
                 const modifiedPdfBytes = await pdfDoc.save();
                 const pdfFileName = path.basename(pdfFilePath);
                 const pdfFilePathWithExtension = pdfFileName.endsWith('.pdf') ? pdfFilePath : `${pdfFilePath}.pdf`;
-            
+        
                 await fs.writeFile(pdfFilePathWithExtension, modifiedPdfBytes);
-            
+        
                 console.log("Deleted pages:", pagesToDelete);
-            
+        
                 res.redirect(`/upload/wait/?file=${pdfFilePathWithExtension}`);
             } catch (error) {
                 console.error('Error processing PDF:', error);
                 return res.status(500).send(error.message); // Trả về thông báo lỗi cho người dùng
             }
-            
         });
+        
     }
     wait(req, res) {
         const pdfFilePathWithExtension = req.query.file;
