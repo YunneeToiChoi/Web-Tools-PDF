@@ -62,7 +62,7 @@ class UploadsController {
         res.render('downloadPage', { pdfFilePathWithExtension });
     }
     download(req, res) {
-        const pdfFilePathWithExtension = req.query.file;
+        const pdfFilePathWithExtension = req.query.file;    
         res.download(pdfFilePathWithExtension, (err) => {
             if (err) {
                 console.error('Error downloading file:', err);
