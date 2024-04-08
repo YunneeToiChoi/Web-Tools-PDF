@@ -27,6 +27,8 @@ source-base
      └── CSS
 ├── Uploads
     ├── PDF
+├── src
+    ├── input.css
 
 Browser -> Middle ware ( router , dispatcher ) -> Controller -> model, views
 serverSide có Router truyền App(expressJs) -> main.router có function chạy các router con ( site router hoặc news router ) -> site router/news router -> controller ( có class function ) -> render/send ra index
