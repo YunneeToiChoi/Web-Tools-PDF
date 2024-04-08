@@ -1,6 +1,7 @@
 # IMPORTANT:
 npm start 
-npm run watch
+npm run watch:sass
+npm run build:postcss
 # Web-Tools-PDF
 Node js npm init -y
 library PDF npm install --save pdf-lib ( document : https://github.com/YunneeToiChoi/pdf-lib/blob/master/README.md ) && (https://pdf-lib.js.org/docs/api/)
@@ -66,4 +67,4 @@ Tạo file nguồn add tài nguyên(input)
 - Run the CLI tool to scan your template files for classes and build your CSS.
 Tạo file đích định nghĩa css những class tailwind đã dùng trong dự án (Command Line Interface)
 >npx tailwindcss -i ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch
-./source-base/Public/CSS/tailwind.css 
+./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
