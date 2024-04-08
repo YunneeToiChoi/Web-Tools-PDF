@@ -28,28 +28,19 @@ class PdfToolController {
             }   
             const pdfFilePath = req.file.path;
             pdfTemp = pdfFilePath;
-            console.log("TEMPPPPPPPPPPPPPPPP"+pdfTemp);
         res.redirect(`/pdf-tools/pdf-split/option?pdfFilePath=${pdfFilePath}`);
         });
     }
     pdfOption_Index(req,res){
-        // Lấy giá trị của tham số pdfFilePath từ URL query
         const pdfFilePath = req.query.pdfFilePath;
-        console.log("OPTION INDEX "+pdfFilePath);
-        // Truyền giá trị pdfFilePath vào template khi render
-        res.render('pdf-split_option', { pdfFilePath: pdfFilePath });
+        res.render('pdf-split_option', {pdfFilePath});
     }
     pdfSplit_Resolve = async (req, res) => {
         const indexPage = req.body.indexPage;
-        const pdfFilePath = pdfTemp; // Sử dụng biến pdfTemp đã lưu từ phương thức pdfOption_Index
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@"+pdfFilePath);
+        const pdfFilePath = pdfTemp;
         try {
-            // Đợi cho việc tải tài liệu PDF hoàn thành
             const pdfData = await fs.readFile(pdfFilePath);
-            // Chuyển đổi dữ liệu PDF sang Uint8Array hoặc ArrayBuffer
             const pdfDataArray = new Uint8Array(pdfData);
-    
-            // Load tài liệu PDF
             const pdfDoc = await PDFDocument.load(pdfDataArray);
             const totalPages = pdfDoc.getPageCount();
             const pagesToDelete = indexPage.split(',').map(page => parseInt(page.trim()) - 1);
@@ -69,10 +60,8 @@ class PdfToolController {
             const pdfFilePathWithExtension = pdfFileName.endsWith('.pdf') ? pdfFilePath : `${pdfFilePath}.pdf`;
     
             await fs.writeFile(pdfFilePathWithExtension, modifiedPdfBytes);
-            console.log("Deleted pages:", pagesToDelete);
             res.redirect(`/pdf-tools/pdf-split/download?file=${pdfFilePathWithExtension}`);
         } catch (error) {
-            console.error('Error processing PDF:', error);
             return res.status(500).send(error.message);
         }
     }
@@ -86,8 +75,6 @@ class PdfToolController {
             if (err) {
                 console.error('Error downloading file:', err);
                 return res.status(500).send('Error downloading file');
-            } else {
-                console.log('File downloaded successfully');
             }
         });
     }
