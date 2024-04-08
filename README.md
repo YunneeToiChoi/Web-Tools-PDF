@@ -44,3 +44,24 @@ khi sử dụng các file css hay scss thì phải config thêm ( ở file nodem
 # FORM GET POST
 >> Dùng Query {name}, {method} {action} -> {Dispatcher} -> {Function Handler}
 
+# TailwindCSS - Library 
+* Lý do sử dụng tailwind : 
+tiết kiệm tài nguyên ( chỉ import những dữ liệu cần dùng thay vì phải import toàn bộ thư viện như bootstrap)
+Tuỳ biến cao
+hiệu suất cao
+- Install Tailwind CSS :
+>npm install -D tailwindcss
+>npx tailwindcss init
+
+- Add the paths to all of your template files in your tailwind.config.js file.
+(Định nghĩa đường dẫn cho phép Tailwind truy cập các thẻ html và js trong dự án )
+>content: ["./source-base/**/*.{html,js}"],
+
+- Add the @tailwind directives for each of Tailwind’s layers to your main CSS file.
+Tạo file nguồn add tài nguyên(input)
+>./source-base/src/input.css 
+
+- Run the CLI tool to scan your template files for classes and build your CSS.
+Tạo file đích định nghĩa css những class tailwind đã dùng trong dự án (Command Line Interface)
+>npx tailwindcss -i ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch
+./source-base/Public/CSS/tailwind.css 
