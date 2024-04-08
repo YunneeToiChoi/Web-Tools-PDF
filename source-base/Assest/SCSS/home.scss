@@ -1,3 +1,4 @@
+@import 'variable';
 .container{
     justify-content: center;
     width: auto;
@@ -70,7 +71,7 @@
     height: 100%;
 }
 
-.Container-box_bakcground
+.Container-box_background
 {
     height: 100%;
     background: #7961f2;
@@ -111,7 +112,7 @@
     transform: translateX(8%);
 }
 
-.box-content_text-namefile
+.box-content_text-nameFile
 {
     
     color: #FFF;
