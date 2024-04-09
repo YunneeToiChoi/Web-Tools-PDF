@@ -47,7 +47,6 @@ class PdfToolController {
         const indexPageSmart = req.body.indexPageSmart;
         const pdfFilePath = pdfTemp;
         const pagesToDelete = parseInput(indexPageBasic, indexPageSmart);
-        console.log(pagesToDelete)
             const pdfData = await fs.readFile(pdfFilePath);
             const pdfDataArray = new Uint8Array(pdfData);
             const pdfDoc = await PDFDocument.load(pdfDataArray);
@@ -55,9 +54,14 @@ class PdfToolController {
             if (pagesToDelete.some(pageNumber => pageNumber < 0 || pageNumber >= totalPages)) {
                 throw new Error(`Invalid page index. Please provide page indices within our format or range 0 to ${totalPages}`);
             }
+            pagesToDelete.sort((a, b) => a - b);
+            console.log(pagesToDelete)
+    
             for (let i = pagesToDelete.length - 1; i >= 0; i--) {
                 pdfDoc.removePage(pagesToDelete[i]);
             }
+
+            
             const modifiedPdfBytes = await pdfDoc.save();
             const pdfFileName = path.basename(pdfFilePath);
             const pdfFilePathWithExtension = pdfFileName.endsWith('.pdf') ? pdfFilePath : `${pdfFilePath}.pdf`;
@@ -86,14 +90,18 @@ function parseInput(inputBasic,inputSmart) {
     const pagesToDelete = inputBasic.split(',').map(value => parseInt(value.trim()) - 1);
     const [start, end] = inputSmart.split('=>').map(value => parseInt(value.trim()) - 1);
     const result = new Set();
-    for (let i = pagesToDelete.length - 1; i >= 1; i--) {
-        result.add(pagesToDelete[i]); 
+       for (let i = pagesToDelete.length - 1; i >= 0; i--) {
+        const pageIndex = pagesToDelete[i];
+        if (!isNaN(pageIndex) && pageIndex >= 0) {
+            result.add(pageIndex); 
+        }
     }
-    for (let i = start; i <= end; i++) {
-        result.add(i);
+    if (!isNaN(start) && !isNaN(end) && start <= end) {
+        for (let i = start; i <= end; i++) {
+            result.add(i);
+        }
     }
-    
-    return Array.from(result).sort((a, b) => a - b);
+    return Array.from(result); 
 }
 
 module.exports = new PdfToolController();
