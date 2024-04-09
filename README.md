@@ -69,3 +69,5 @@ Tạo file nguồn add tài nguyên(input)
 Tạo file đích định nghĩa css những class tailwind đã dùng trong dự án (Command Line Interface)
 >npx tailwindcss -i ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch
 ./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
+# HOSTING
+Render Support : build npm start ( remove nodemon ) and add env packet
