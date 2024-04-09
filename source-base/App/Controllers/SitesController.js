@@ -1,6 +1,6 @@
 class SitesController {
     home(req, res) {
-        res.render('home');
+        res.render('news');
     }
     search(req, res) {
         res.render('search');
