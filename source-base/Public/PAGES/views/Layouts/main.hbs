@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools PDF</title>
+    <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/app.css">
+    <link rel="stylesheet" href="/CSS/reset.css">
+    <link rel="stylesheet" href="/CSS/grid.css">
+    <link rel="stylesheet" href="/CSS/Responsive.css">
+    <link rel="stylesheet" href="/CSS/home.css">
+    <link rel="stylesheet" href="/CSS/tailwind.css">
+    <!--  Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="Main">
+        <div class="grid wide">
+            <!-- BEGIN HEADER -->
+            {{> header}}
+            <!-- END HEADER --> 
+
+            <!-- BEGIN CONTAINER -->
+            <div class="Main-body-content">
+                <div class="spaceOf_headerNav c-2 m-2 l-2">
+                </div>
+                   <!-- Content -->
+                <div id="Container-main_Body" class="c-10 m-10 l-10">
+                {{{body}}}
+                </div>
+            </div>
+            <!-- END CONTAINER  -->
+     
+            <!-- BEGIN FOOTER -->
+            {{> footer}}
+            <!-- END FOOTER  -->
+        </div>
+    </div>
+</body>
+</html>
+
