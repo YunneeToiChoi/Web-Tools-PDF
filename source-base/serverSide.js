@@ -24,7 +24,7 @@ app.engine('hbs', engine({
   extname: '.hbs' // set engine cho file
 }));
 app.set('view engine', 'hbs'); // ref 2 là name của thư viện đc gán tên, cũng là đuôi file
-app.set('views', path.join(__dirname, 'Assest/PAGES/Views'));
+app.set('views', path.join(__dirname, 'Assest/PAGES/views'));
  // pointer default path file html
 // END TEMPLATE ENGINE
 
