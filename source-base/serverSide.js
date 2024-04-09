@@ -1,7 +1,8 @@
 // LIBRARIES BASE
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const port = 3000; // Cổng mà máy chủ sẽ lắng nghe
+const port = process.env.PORT || 3000;
 // LIBRARIES SUPPORTED
 const morgan = require('morgan'); // log 
 const  { engine  }  = require('express-handlebars'); //structor file
