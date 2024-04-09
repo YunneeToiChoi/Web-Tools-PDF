@@ -4,7 +4,7 @@
   "description": "",
   "main": "source-base/serverSide.js",
   "scripts": {
-    "start": "node --inspect source-base/serverSide.js",
+    "start": "nodemon --inspect source-base/serverSide.js",
     "watch:sass": "node-sass --watch source-base/Assest/SCSS/ --output source-base/Public/CSS/",
     "build:postcss": "postcss ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
