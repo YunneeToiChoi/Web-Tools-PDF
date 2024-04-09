@@ -2,6 +2,7 @@
 npm start 
 npm run watch:sass
 npm run build:postcss
+npm run build:minify
 # Web-Tools-PDF
 Node js npm init -y
 library PDF npm install --save pdf-lib ( document : https://github.com/YunneeToiChoi/pdf-lib/blob/master/README.md ) && (https://pdf-lib.js.org/docs/api/)
@@ -52,6 +53,9 @@ khi sử dụng các file css hay scss thì phải config thêm ( ở file nodem
 tiết kiệm tài nguyên ( chỉ import những dữ liệu cần dùng thay vì phải import toàn bộ thư viện như bootstrap)
 Tuỳ biến cao
 hiệu suất cao
+- Cấu hình Tailwind:
+tailwind.config.js
+
 - Install Tailwind CSS :
 >npm install -D tailwindcss
 >npx tailwindcss init
@@ -65,6 +69,11 @@ Tạo file nguồn add tài nguyên(input)
 >./source-base/src/input.css 
 
 - Run the CLI tool to scan your template files for classes and build your CSS.
-Tạo file đích định nghĩa css những class tailwind đã dùng trong dự án (Command Line Interface)
+Tạo file đích định nghĩa css những class tailwind đã dùng trong dự án thông qua postcss (Command Line Interface -> postcss-cli)
 >npx tailwindcss -i ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch
-./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
+./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build: postcss -> npm run build:postcss)
+
+# Tools- postcss
+(Tools hỗ trợ tiền xử lý css như sass bao gồm các plugin : postcss-import , tailwindcss/nesting, tailwindcss ,autoprefixer, postcss-preset-env )
+- Cấu hình và thiết lập plugin postcss
+postcss.config.js

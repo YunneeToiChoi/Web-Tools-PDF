@@ -1,3 +1,15 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+/* 
+@tailwind base: Chứa các quy tắc CSS cơ bản được áp dụng cho phần tử cơ bản của trang web, như phông chữ, màu sắc, lề, vv.
+
+@tailwind components: Chứa các quy tắc CSS cho các thành phần UI như nút, thanh trượt, thẻ, vv.
+
+@tailwind utilities: Chứa tất cả các utility classes của Tailwind, bao gồm các lớp cho margins, paddings, widths, heights, colors, và nhiều hơn nữa.
+
+@tailwind variants: Chứa các cấu hình cho các biến thể của các utility classes. Các biến thể này cho phép bạn kiểm soát cách các utility classes 
+được tạo ra và sử dụng dựa trên các trạng thái như hover, focus, active, và nhiều hơn nữa. */
