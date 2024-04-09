@@ -1,6 +1,6 @@
 const express = require('express'); 
 const router = express.Router();
-const pdfToolController = require('../App/Controllers/pdfToolController');
+const pdfToolController = require('../App/Controllers/PdfToolController');
 
 router.use('/pdf-split/option',pdfToolController.pdfOption_Index)
 router.use('/pdf-split/upload',pdfToolController.pdfUpload)

@@ -1,7 +1,8 @@
 // LIBRARIES BASE
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const port = 3000; // Cổng mà máy chủ sẽ lắng nghe
+const port = process.env.PORT || 3000;
 // LIBRARIES SUPPORTED
 const morgan = require('morgan'); // log 
 const  { engine  }  = require('express-handlebars'); //structor file
@@ -23,8 +24,10 @@ app.engine('hbs', engine({
   extname: '.hbs' // set engine cho file
 }));
 app.set('view engine', 'hbs'); // ref 2 là name của thư viện đc gán tên, cũng là đuôi file
-app.set('views',path.join(__dirname, 'ASSEST/PAGES/Views')); // pointer default path file html
-// END TEMPLATE ENGINE
+app.set('views', path.join(__dirname, 'Assest/PAGES/views'));
+
+ // pointer default path file html
+// END TEMPLATE ENGINEEE
 
 //Route
 route(app)
