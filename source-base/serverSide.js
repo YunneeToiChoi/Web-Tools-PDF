@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 3000;
+const connectDB = require('./config/connectDB');
 // LIBRARIES SUPPORTED
 const morgan = require('morgan'); // log 
 const  { engine  }  = require('express-handlebars'); //structor file
@@ -15,6 +16,7 @@ app.use(express.urlencoded({
   extends: true
 })) // middleware
 app.use(express.json()) // middleware client -> server 
+connectDB();
 /////
 //HTTP LOGGER
 app.use(morgan('combined'));

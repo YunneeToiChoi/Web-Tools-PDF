@@ -71,3 +71,19 @@ Tạo file đích định nghĩa css những class tailwind đã dùng trong d�
 ./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
 # HOSTING
 Render Support : build npm start ( remove nodemon ) and add env packet
+# DATABASE
+public sever nho doi enviroment
+logging : false la kh in ra cau query cua mysql {packed jsosn}
+
+cd [name thu muc] se chuyen toi path cua termnial do
+download XAMPP
+npm sequelize     npm i sequelize --save
+npm sequelize cli  npm install --save-dev sequelize-cli 
+Document : https://sequelize.org/docs/v6/other-topics/migrations/
+npx sequelize-cli init
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+npm install --save mysql2
+
+npx sequelize-cli db:migrate
+npx sequelize-cli seed:generate --name demo-user
+npx sequelize-cli db:seed:all
