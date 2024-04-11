@@ -13,3 +13,9 @@
 
 @tailwind variants: Chứa các cấu hình cho các biến thể của các utility classes. Các biến thể này cho phép bạn kiểm soát cách các utility classes 
 được tạo ra và sử dụng dựa trên các trạng thái như hover, focus, active, và nhiều hơn nữa. */
+
+@layer base{
+    :root{
+        --opacity-background-color-input:26,26,26;
+    }
+}

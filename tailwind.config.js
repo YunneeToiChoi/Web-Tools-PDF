@@ -14,15 +14,12 @@ module.exports = {
     //   lg: '976px',
     //   xl: '1440px',
     // },
-    // colors: {
-    //   'blue': '#1fb6ff',
-    //   'pink': '#ff49db',
-    //   'orange': '#ff7849',
-    //   'green': '#13ce66',
-    //   'gray-dark': '#273444',
-    //   'gray': '#8492a6',
-    //   'gray-light': '#d3dce6',
-    // },
+    colors: {
+      'primary-black': '#111827',
+      'hover-btn-nav':'#242424',
+      'primary-home':'#7961f2',
+      'primary-opacity-home':'rgba(var(--opacity-background-color-input), <alpha-value>)',
+    },
     // fontFamily: {
     //   sans: ['Graphik', 'sans-serif'],
     //   serif: ['Merriweather', 'serif'],
@@ -38,6 +35,5 @@ module.exports = {
     // }
   },
   plugins: [],
-  prefix: 'tw-',//prefix tailwind
 }
 
