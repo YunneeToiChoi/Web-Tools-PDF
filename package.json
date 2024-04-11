@@ -7,6 +7,7 @@
     "start": "nodemon --inspect source-base/serverSide.js",
     "watch:sass": "node-sass --watch source-base/Assest/SCSS/ --output source-base/Public/CSS/",
     "build:postcss": "postcss ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch",
+    "build:minify": "postcss ./source-base/Public/CSS/tailwind.css -o ./source-base/Public/CSS/tailwind.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "sequelize": "^6.37.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.19",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
