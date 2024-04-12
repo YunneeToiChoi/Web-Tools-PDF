@@ -1,15 +1,15 @@
-<div class=" mt-16 flex">
+<div class=" mt-16 flex w-full max-w-screen-xl mx-[200px] max-[847px]:max-w-[480px] ">
     <div class="mx-auto w-full px-12 xl:max-w-screen-2xl">
-        <div class="flex flex-col w-full justify-start gap-6">
+        <div class="flex flex-col w-full justify-start gap-6 min-w-96">
             <div class="flex justify-center items-center"><h1 class=" text-[42px] font-bold">Split PDF</h1></div>
-                <div class=" w-full min-w-[24rem] min-h-80 h-auto flex">
+                <div class=" w-full min-h-80 h-auto flex">
                     <label class=" block cursor-pointer w-full">
                         <form class="formUpload_Container w-full h-full" action="/pdf-tools/pdf-split/upload" method="POST" enctype="multipart/form-data">
                             <label class=" cursor-pointer">
                                 <input class="formUpload_input absolute h-[1px] w-[1px] overflow-hidden" type="file" name="pdfFilePath" accept=".pdf" required>
                             </label>
                             <div class=" h-full w-full relative rounded-lg bg-primary-home shadow-xl shadow-indigo-500/50 overflow-hidden">
-                                <div class="flex justify-center absolute inset-3 border-dashed border-[1px] border-white rounded-[4px] bg-primary-opacity-home bg-opacity-[0.1] items-center">
+                                <div class="flex justify-center absolute inset-3 border-dashed border-[1px] border-white rounded-[4px] bg-black bg-opacity-[0.1] items-center">
                                     <div class=" flex flex-col justify-start gap-6 items-center">
                                         <div class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 60" class=" w-[96px] h-[60px]">
