@@ -1,14 +1,77 @@
-<div style="margin: 20px; align-items: center; width : 100%; display: flex; justify-content: center;" class="YouShouldDeleteThisBlock">
-{{>previewsPDF}}
-
-</div>
-<form style="background-color: red;" class="" action="/pdf-tools/pdf-split/resolve" method="POST">
-    <input type="hidden" name="pdfFilePath" id="pdfFilePath" value="{{pdfFilePath}}">
-    <p>basic</p>
-    <input class="formUpload_inputIndexPage" type="text" name="indexPageBasic">
-    <p>smart</p>
-    <input class="formUpload_inputIndexPage" type="text" name="indexPageSmart">
-    <div class="box-btn_upload">
-        <button class="formUpload_submit" type="submit"><i class="Icon-upload_home fa-solid fa-cloud-arrow-up"></i></button>
+<div class=" mt-4 relative w-full flex justify-center">
+    <div  class="YouShouldDeleteThisBlock mb-80">{{>previewsPDF}}</div>
+    <div class="fixed bottom-10 max-w-7xl z-10 bg-indigo-500 hover:shadow-xl hover:shadow-indigo-500/50 transition hover:duration-150 delay-150 ease-in-out rounded-lg px-9 ">
+        <form class=" w-full mx-auto h-full flex items-center py-5" action="/pdf-tools/pdf-split/resolve" method="POST">
+            <input type="hidden" name="pdfFilePath" id="pdfFilePath" value="{{pdfFilePath}}">
+            <div class="flex w-full justify-around gap-10 max-lg:flex-col max-lg:items-center">
+                <div class="flex w-80 justify-evenly">
+                    <label for="basic" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white ">
+                    <p>Basic</p>
+                    <input id="basic" name="option-checked" value="basic" type="radio" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white" checked="">
+                    </label>
+                    <label for="smart" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white">
+                            <p>Smart</p>
+                            <input id="smart" name="option-checked" value="smart" type="radio" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white" checked="">
+                    </label>
+                </div>
+                <div class="flex flex-1 justify-center items-center">
+                    <div  id="indexPageBasic" class=" gap-3 hidden w-full max-lg:flex-col max-lg:items-center">
+                        <input type="text" name="indexPageBasic" class=" max-w-xl focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Enter page numbers">
+                        <span class=" min-w-32 font-normal text-gray-300">EX: 8 or 1,3,5,7</span>
+                    </div>
+                    <div id="indexPageSmart" class="flex gap-3 w-full max-lg:flex-col max-lg:items-center">
+                        <input type="text" name="indexPageSmart" class="  max-w-xl focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Enter list page numbers">
+                        <span class=" min-w-32 font-normal text-gray-300">EX: 1=>4</span>
+                    </div>
+                </div>
+                <div class="box-btn_upload w-80 flex justify-center items-center">
+                    <button class="formUpload_submit transition hover:duration-300 ease-in-out delay-75 bg-white hover:bg-[#F9F9F9] duration-300 text-black px-16 py-2 rounded-lg font-bold text-center hover:-translate-y-1 hover:scale-100 hover:shadow-lg hover:bg-black hover:text-white" type="submit">
+                        Finish
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+</div>
+
+
+
+
+
+<script>
+document.querySelectorAll('input[name="option-checked"]').forEach(function(input) {
+    input.addEventListener('change', function(event) {
+        const selectedValue = event.target.value;
+        console.log("Giá trị của input đã chọn là: " + selectedValue);
+        selectOption(selectedValue);
+    });
+});
+function selectOption(option) {
+    const basicInput = document.getElementById("indexPageBasic");
+    const smartInput = document.getElementById("indexPageSmart");
+    if (basicInput && smartInput) {
+        if (option === 'basic') {
+            basicInput.classList.remove('hidden');
+            basicInput.classList.add('flex');
+            smartInput.classList.add('hidden');
+            smartInput.classList.remove('flex');
+        } else if (option === 'smart') {
+            smartInput.classList.remove('hidden');
+            smartInput.classList.add('flex');
+            basicInput.classList.add('hidden');
+            basicInput.classList.remove('flex');
+        }
+    }
+}
+function getSelectedRadioValue() {
+    const radioInputs = document.querySelectorAll('input[name="option-checked"]');
+    for (let i = 0; i < radioInputs.length; i++) {
+        if (radioInputs[i].checked) {
+            const selectedValue = radioInputs[i].value;
+            selectOption(selectedValue);
+            return selectedValue;
+        }
+    }
+    return null;
+}
+</script>

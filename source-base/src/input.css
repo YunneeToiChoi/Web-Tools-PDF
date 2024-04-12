@@ -24,3 +24,11 @@
   * your stylesheet by default.
   */
  @tailwind variants;
+
+ @layer components
+ {
+    .scrollable::-webkit-scrollbar {
+        @apply hidden;
+      }
+
+ }
