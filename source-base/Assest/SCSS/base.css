@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #F5F4FC;
+}
+
+.btn_main {
+  border-radius: 22px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 103px;
+  height: 37px;
+  flex-shrink: 0;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.cursor_hover {
+  cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+  border: none;
+  background: transparent;
+  color: #fff;
+}/*# sourceMappingURL=base.css.map */

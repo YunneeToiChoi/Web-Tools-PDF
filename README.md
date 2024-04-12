@@ -74,10 +74,17 @@ Tạo file đích định nghĩa css những class tailwind đã dùng trong d�
 >npx tailwindcss -i ./source-base/src/input.css -o ./source-base/Public/CSS/tailwind.css --watch
 ./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
 
+- Tailwindcomponents Cheatseet
+Page List component
+
 # Tools- postcss
 (Tools hỗ trợ tiền xử lý css như sass bao gồm các plugin : postcss-import , tailwindcss/nesting, tailwindcss ,autoprefixer, postcss-preset-env )
 - Cấu hình và thiết lập plugin postcss
 postcss.config.js
+
+# API cloud icon - cdnjs.com
+(font-awesome)
+*Recommend: Remix icon
 
 # HOSTING
 Render Support : build npm start ( remove nodemon ) and add env packet

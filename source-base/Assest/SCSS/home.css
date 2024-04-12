@@ -1,0 +1,164 @@
+.container {
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+
+.Container-box_parent {
+  position: relative;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.24);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.22);
+  width: 85%;
+  height: 587px;
+}
+
+.Container-box_list {
+  height: 100%;
+  width: 100%;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Title_content {
+  display: flex;
+  align-items: center;
+}
+
+.Title_content-text {
+  color: #000;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 8px;
+}
+
+.Container-content {
+  flex: 1;
+  margin-top: 31px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Header_text {
+  color: #000;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.Container-box_list-Content {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 75px;
+  margin-bottom: 30px;
+  width: 90%;
+  height: 100%;
+}
+
+.Container-box_background {
+  height: 100%;
+  background: #7961f2;
+  padding: 14px;
+}
+
+.Container-box_stroke {
+  position: relative;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px dashed #FFF;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.Container-box_content {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Icon-upload_home {
+  color: #FFF;
+}
+
+.box-btn_upload {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(8%);
+}
+
+.box-content_text-nameFile {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0px 12px 0px 12px;
+}
+
+.formUpload_Container {
+  width: auto;
+  height: auto;
+  position: relative;
+}
+
+.formUpload_input {
+  cursor: pointer;
+  position: absolute;
+  width: 213px;
+  height: 56px;
+  top: 28px;
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: transparent;
+}
+
+.formUpload_submit {
+  visibility: visible;
+  cursor: pointer;
+  padding: 8px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.formUpload_input-content {
+  cursor: pointer;
+  width: 213px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FFF;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.formUpload_input-content h1 {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.Container-box_img {
+  text-align: center;
+  margin-top: 8%;
+}/*# sourceMappingURL=home.css.map */
