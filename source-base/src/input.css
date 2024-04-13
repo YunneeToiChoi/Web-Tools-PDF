@@ -30,5 +30,4 @@
     .scrollable::-webkit-scrollbar {
         @apply hidden;
       }
-
  }

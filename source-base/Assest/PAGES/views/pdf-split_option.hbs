@@ -7,20 +7,20 @@
                 <div class="flex w-80 justify-evenly">
                     <label for="basic" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white ">
                     <p>Basic</p>
-                    <input id="basic" name="option-checked" value="basic" type="radio" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white" checked="">
+                    <input id="basic" name="option-checked" value="basic" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
                     </label>
                     <label for="smart" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white">
                             <p>Smart</p>
-                            <input id="smart" name="option-checked" value="smart" type="radio" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white" checked="">
+                            <input id="smart" name="option-checked" value="smart" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
                     </label>
                 </div>
-                <div class="flex flex-1 justify-center items-center">
-                    <div  id="indexPageBasic" class=" gap-3 hidden w-full max-lg:flex-col max-lg:items-center">
-                        <input type="text" name="indexPageBasic" class=" max-w-xl focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Enter page numbers">
+                <div class="flex flex-1 gap-3 justify-center items-center">
+                    <div  class=" flex flex-col items-center gap-3 w-full max-lg:flex-col max-lg:items-center">
+                        <input disabled id="indexPageBasic" type="text" name="indexPageBasic" class="disabled:bg-slate-200 disabled:ring-slate-400 disabled:ring-1 disabled:placeholder:text-gray-600 disabled:cursor-not-allowed min-w-40 focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-1 pr-1 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Basic">
                         <span class=" min-w-32 font-normal text-gray-300">EX: 8 or 1,3,5,7</span>
                     </div>
-                    <div id="indexPageSmart" class="flex gap-3 w-full max-lg:flex-col max-lg:items-center">
-                        <input type="text" name="indexPageSmart" class="  max-w-xl focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Enter list page numbers">
+                    <div  class="flex flex-col items-center gap-3 w-full max-lg:flex-col max-lg:items-center">
+                        <input disabled id="indexPageSmart"  type="text" name="indexPageSmart" class=" disabled:bg-slate-200 disabled:ring-slate-400 disabled:ring-1 disabled:placeholder:text-gray-600 disabled:cursor-not-allowed min-w-40 focus:outline-none h-8 formUpload_inputIndexPage w-full rounded-md border-0 py-1.5 pl-1 pr-1 text-pink-500 ring-2 ring-inset ring-gray-300 placeholder:text-pink-500 focus:ring-2 focus:ring-inset focus:ring-pink-500 sm:text-sm sm:leading-6" placeholder="Smart">
                         <span class=" min-w-32 font-normal text-gray-300">EX: 1=>4</span>
                     </div>
                 </div>
@@ -39,39 +39,23 @@
 
 
 <script>
-document.querySelectorAll('input[name="option-checked"]').forEach(function(input) {
-    input.addEventListener('change', function(event) {
+
+function selectOption(option) {
+    const input = document.getElementById(`indexPage${option.charAt(0).toUpperCase() + option.slice(1)}`);
+    if (input) {
+        input.disabled = !input.disabled;
+        if (input.disabled) {
+            input.value ='';
+            console.log(input.value);
+        }
+    }
+}
+
+document.querySelectorAll('input[name="option-checked"]').forEach(input => {
+    input.addEventListener('change', event => {
         const selectedValue = event.target.value;
-        console.log("Giá trị của input đã chọn là: " + selectedValue);
+        console.log("Selected option value: " + selectedValue);
         selectOption(selectedValue);
     });
 });
-function selectOption(option) {
-    const basicInput = document.getElementById("indexPageBasic");
-    const smartInput = document.getElementById("indexPageSmart");
-    if (basicInput && smartInput) {
-        if (option === 'basic') {
-            basicInput.classList.remove('hidden');
-            basicInput.classList.add('flex');
-            smartInput.classList.add('hidden');
-            smartInput.classList.remove('flex');
-        } else if (option === 'smart') {
-            smartInput.classList.remove('hidden');
-            smartInput.classList.add('flex');
-            basicInput.classList.add('hidden');
-            basicInput.classList.remove('flex');
-        }
-    }
-}
-function getSelectedRadioValue() {
-    const radioInputs = document.querySelectorAll('input[name="option-checked"]');
-    for (let i = 0; i < radioInputs.length; i++) {
-        if (radioInputs[i].checked) {
-            const selectedValue = radioInputs[i].value;
-            selectOption(selectedValue);
-            return selectedValue;
-        }
-    }
-    return null;
-}
 </script>

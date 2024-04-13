@@ -473,6 +473,9 @@ video {
   * This injects Tailwind's utility classes and any utility classes registered
   * by plugins.
   */
+ .invisible {
+  visibility: hidden;
+}
  .static {
   position: static;
 }
@@ -528,9 +531,6 @@ video {
  .ml-10 {
   margin-left: 2.5rem;
 }
- .ml-\[40px\] {
-  margin-left: 40px;
-}
  .mt-10 {
   margin-top: 2.5rem;
 }
@@ -578,9 +578,6 @@ video {
 }
  .h-3\/5 {
   height: 60%;
-}
- .h-6 {
-  height: 1.5rem;
 }
  .h-8 {
   height: 2rem;
@@ -639,8 +636,8 @@ video {
  .w-52 {
   width: 13rem;
 }
- .w-6 {
-  width: 1.5rem;
+ .w-8 {
+  width: 2rem;
 }
  .w-80 {
   width: 20rem;
@@ -850,14 +847,8 @@ video {
  .pl-6 {
   padding-left: 1.5rem;
 }
- .pl-7 {
-  padding-left: 1.75rem;
-}
  .pr-1 {
   padding-right: 0.25rem;
-}
- .pr-20 {
-  padding-right: 5rem;
 }
  .pt-6 {
   padding-top: 1.5rem;
@@ -1020,6 +1011,9 @@ video {
   transition-duration: 100ms;
 }
  @media not all and (min-width: 1536px) {
+  .max-2xl\:max-w-5xl {
+    max-width: 64rem;
+  }
   .max-2xl\:grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
