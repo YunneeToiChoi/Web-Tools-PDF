@@ -63,10 +63,8 @@
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
  abbr:where([title]) {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline;
           text-decoration: underline dotted;
 }
  /*
@@ -923,6 +921,9 @@ video {
 }
  .ring-inset {
   --tw-ring-inset: inset;
+}
+ .filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
  .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
