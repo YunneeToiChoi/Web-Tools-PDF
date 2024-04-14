@@ -5,13 +5,13 @@
             <input type="hidden" name="pdfFilePath" id="pdfFilePath" value="{{pdfFilePath}}">
             <div class="flex w-full justify-around gap-10 max-lg:flex-col max-lg:items-center">
                 <div class="flex w-80 justify-evenly">
-                    <label for="basic" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white ">
+                    <label class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white ">
                     <p>Basic</p>
-                    <input id="basic" name="option-checked" value="basic" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
+                    <input  name="option-checked" value="basic" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
                     </label>
-                    <label for="smart" class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white">
-                            <p>Smart</p>
-                            <input id="smart" name="option-checked" value="smart" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
+                    <label  class=" hover:cursor-pointer text-slate-700 has-[:checked]:ring-slate-900 has-[:checked]:text-white has-[:checked]:bg-slate-900 flex  items-center gap-6 rounded-lg p-4 ring-1 ring-transparent hover:bg-slate-100 bg-white">
+                        <p>Smart</p>
+                        <input  name="option-checked" value="smart" type="checkbox" class=" hover:cursor-pointer box-content h-1.5 w-1.5 appearance-none rounded-full border-[5px] border-white bg-white bg-clip-padding outline-none ring-1 ring-gray-950/10 checked:border-slate-900 checked:ring-white">
                     </label>
                 </div>
                 <div class="flex flex-1 gap-3 justify-center items-center">
@@ -39,23 +39,40 @@
 
 
 <script>
+//Lưu trạng thái input vào local storage
+function saveToLocalStorage(id, disabled) {
+    localStorage.setItem(id, disabled ? 'disabled' : 'enabled');
+}
 
-function selectOption(option) {
+function loadFromLocalStorage(id) {
+    return localStorage.getItem(id) === 'disabled';
+}
+
+//xử lí block input
+function toggleOption(option) {
     const input = document.getElementById(`indexPage${option.charAt(0).toUpperCase() + option.slice(1)}`);
     if (input) {
         input.disabled = !input.disabled;
-        if (input.disabled) {
-            input.value ='';
-            console.log(input.value);
-        }
+        input.value = '';
+        saveToLocalStorage(input.id, input.disabled);
+        console.log(input.value);
     }
 }
 
+//nhận request từ local storage trạng thái input
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[id^="indexPage"]').forEach(input => {
+        input.disabled = loadFromLocalStorage(input.id);
+    });
+});
+
+
+//bắt input checked
 document.querySelectorAll('input[name="option-checked"]').forEach(input => {
     input.addEventListener('change', event => {
         const selectedValue = event.target.value;
         console.log("Selected option value: " + selectedValue);
-        selectOption(selectedValue);
+        toggleOption(selectedValue);
     });
 });
 </script>

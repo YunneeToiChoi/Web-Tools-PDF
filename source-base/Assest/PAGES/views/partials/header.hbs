@@ -12,7 +12,7 @@
                     <button class="transition hover:duration-300 ease-in-out delay-75 bg-black  duration-300 text-white px-6 py-2 rounded-lg font-bold text-center hover:-translate-y-1 hover:scale-100 hover:shadow-lg">
                         Login
                     </button>
-                    <button class="transition hover:duration-300 ease-in-out delay-75 bg-white hover:bg-[#F9F9F9] duration-300 text-black px-6 py-2 rounded-lg font-bold text-center hover:-translate-y-1 hover:scale-100 hover:shadow-lg">
+                    <button class="btn_res transition hover:duration-300 ease-in-out delay-75 bg-white hover:bg-[#F9F9F9] duration-300 text-black px-6 py-2 rounded-lg font-bold text-center hover:-translate-y-1 hover:scale-100 hover:shadow-lg">
                     sign up
                     </button>
                 </div>
@@ -27,3 +27,37 @@
     </div>
     </div>
 </div>
+{{>signUp}}
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form_res = document.querySelector('.signUp_form');
+    const Overlay_res = document.querySelector('.Overlay_res');
+    const closed_res = document.querySelector('.closed_res');
+    const btn_res = document.querySelector('.btn_res');
+    const box_res=document.querySelector('.box_form_res');
+
+    btn_res.addEventListener('click', openForm);
+    Overlay_res.addEventListener('click', closeForm);
+    closed_res.addEventListener('click', closeForm);
+
+    function closeForm() {
+        Overlay_res.classList.remove('animate-fadeIn');
+            form_res.classList.remove('inset-0');
+        box_res.classList.remove('animate-fadeInRight');
+        Overlay_res.classList.add('animate-fadeOut');
+        box_res.classList.add('animate-fadeOutRight');
+        form_res.classList.add('hidden');
+    }
+
+    function openForm() {
+        form_res.classList.remove('hidden');
+        form_res.classList.add('inset-0');
+         Overlay_res.classList.add('animate-fadeIn');
+        box_res.classList.add('animate-fadeInRight');
+           Overlay_res.classList.remove('animate-fadeOut');
+        box_res.classList.remove('animate-fadeOutRight');
+    }
+});
+</script>

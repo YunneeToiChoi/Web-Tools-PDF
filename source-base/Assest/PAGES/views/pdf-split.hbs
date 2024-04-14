@@ -40,12 +40,23 @@
 
 
     <script>
-        const buttonUpload = document.querySelector('.formUpload_submit');
-        document.querySelector('.formUpload_input').addEventListener('change', function() {
-            const fileName = this.files[0].name;
-            document.querySelector('.name-file').textContent = fileName;
-            if (fileName.length > 0) {
-                buttonUpload.classList.remove('invisible');
-            }
+        window.addEventListener("pageshow", function(event) {
+            const form = document.querySelector('.formUpload_Container');
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(function(input) {
+                input.value = '';
+            });
+        });
+
+         document.addEventListener("DOMContentLoaded", function(){
+                const buttonUpload = document.querySelector('.formUpload_submit');
+                document.querySelector('.formUpload_input').addEventListener('change', function() {
+                const fileName = this.files[0].name;
+                console.log(fileName);
+                document.querySelector('.name-file').textContent = fileName;
+                if (fileName.length > 0) {
+                    buttonUpload.classList.remove('invisible');
+                }
+            });
         });
     </script>
