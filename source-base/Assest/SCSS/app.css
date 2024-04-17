@@ -1,0 +1,161 @@
+/* Header-nav-css */
+.Main-header_Container {
+  margin-top: 20px;
+  justify-content: space-between;
+  display: flex;
+}
+
+/* -------------------------------------------------------------------------------------------Content-main -----------------------------------------------------------------------*/
+.Containtner-main_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Main_header-left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Logo-web {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.Icon_Logo {
+  border-radius: 80px;
+  background: url(<path-to-image>) lightgray 50%/cover no-repeat;
+}
+
+.Name_web {
+  margin: 0px 20px 0px 20px;
+}
+
+.Name_web-text {
+  cursor: default;
+  color: #000;
+  font-family: Stencil;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Main_header-right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn_login {
+  color: #FFF;
+  background: #000;
+}
+
+.Register_container {
+  margin-left: 20px;
+}
+
+.btn_register {
+  border: 1px solid #000;
+  background-color: #FFF;
+}
+
+#Container-main_Body {
+  display: flex;
+  margin-top: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Main-body-content {
+  display: flex;
+  width: 100%;
+  margin-top: 12px;
+  justify-content: space-between;
+}
+
+/* -------------------------------------------------------------------------------------------Content-main-END-----------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------Content-header-left -------------------------------------------------------------------*/
+.Header_navleft-box {
+  position: fixed;
+  display: flex !important;
+  flex-direction: column;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 32px;
+  width: 5em;
+  justify-content: space-between;
+  min-height: 95vh;
+  background-color: white;
+  padding: 30px 0px 30px 0px;
+  align-items: center;
+}
+
+/* Nav_header-center */
+.Categories-List {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.Navleft-box_center {
+  display: flex;
+  flex: 1;
+}
+
+.Cate-Item {
+  transform: rotate(-90deg);
+}
+
+.Cate-Item a {
+  text-decoration: none;
+  text-align: center;
+}
+
+.Cate-Item_text {
+  padding: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.cate-item-text_focus {
+  color: #000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+/* Nav-header_bottom */
+.Navleft-box_bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Item_setting {
+  padding: 12px;
+  margin: 0px 0px 12px 0px;
+}
+
+.User_avt {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+}
+
+.User_avt_pict {
+  border-radius: 65px;
+  background: url(<path-to-image>) lightgray 50%/cover no-repeat;
+}
+
+/* -----------------------------------------------------------------------------------------Content-header-left-END -------------------------------------------------------------------*//*# sourceMappingURL=app.css.map */

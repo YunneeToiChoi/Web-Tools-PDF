@@ -47,6 +47,7 @@ class PdfToolController {
         const indexPageSmart = req.body.indexPageSmart;
         const pdfFilePath = pdfTemp;
         const pagesToDelete = parseInput(indexPageBasic, indexPageSmart);
+        console.log(pagesToDelete)
             const pdfData = await fs.readFile(pdfFilePath);
             const pdfDataArray = new Uint8Array(pdfData);
             const pdfDoc = await PDFDocument.load(pdfDataArray);
@@ -86,22 +87,30 @@ class PdfToolController {
         });
     }
 }
-function parseInput(inputBasic,inputSmart) {
-    const pagesToDelete = inputBasic.split(',').map(value => parseInt(value.trim()) - 1);
-    const [start, end] = inputSmart.split('=>').map(value => parseInt(value.trim()) - 1);
+function parseInput(inputBasic, inputSmart) {
     const result = new Set();
-       for (let i = pagesToDelete.length - 1; i >= 0; i--) {
-        const pageIndex = pagesToDelete[i];
-        if (!isNaN(pageIndex) && pageIndex >= 0) {
-            result.add(pageIndex); 
+
+    if (inputBasic) {
+        const pagesToDelete = inputBasic.split(',').map(value => parseInt(value.trim()) - 1);
+        for (let i = pagesToDelete.length - 1; i >= 0; i--) {
+            const pageIndex = pagesToDelete[i];
+            if (!isNaN(pageIndex) && pageIndex >= 0) {
+                result.add(pageIndex);
+            }
         }
     }
-    if (!isNaN(start) && !isNaN(end) && start <= end) {
-        for (let i = start; i <= end; i++) {
-            result.add(i);
+
+    if (inputSmart) {
+        const [start, end] = inputSmart.split('=>').map(value => parseInt(value.trim()) - 1);
+        if (!isNaN(start) && !isNaN(end) && start <= end) {
+            for (let i = start; i <= end; i++) {
+                result.add(i);
+            }
         }
     }
-    return Array.from(result); 
+
+    return Array.from(result);
 }
+
 
 module.exports = new PdfToolController();
