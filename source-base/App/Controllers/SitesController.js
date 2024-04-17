@@ -1,5 +1,5 @@
 const db = require('../../models/index');
-const createNewUserServices = require('../../services/createUserServices');
+const CRUDService = require('../../services/user_crud');
 
 class SitesController {
     home = async (req,res) =>  {
@@ -15,12 +15,24 @@ class SitesController {
         }
     }
     postCRUD = async (req, res) => {
-        await createNewUserServices(req.body);
+        await CRUDService.createNewUser(req.body);
         res.send('ok')
-    } 
+    }
+    displayGetCRUD = async (req, res) => {
+        try{
+            let data = await CRUDService.getAllUser();
+            return res.render('displayCRUD',{
+                dataTable : data,
+            });
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
     search(req, res) {
         res.render('search');
     }
+    
 }
 
 module.exports = new SitesController();
