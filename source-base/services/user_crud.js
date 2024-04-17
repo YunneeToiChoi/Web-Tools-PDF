@@ -26,5 +26,20 @@ let hashUserPassword = (password) => {
             reject(err);
         }
     });
-}  
-module.exports = createNewUser;
+}
+let getAllUser = () => {
+    return new Promise(async(resolve, reject) => {
+        try{
+            const users = await db.User.findAll();
+            return resolve(users);
+        }
+        catch(e){
+            return reject(e);
+        }
+       
+    });
+}
+module.exports = {
+    createNewUser : createNewUser,
+    getAllUser : getAllUser,
+};

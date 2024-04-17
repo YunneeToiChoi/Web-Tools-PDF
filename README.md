@@ -20,6 +20,7 @@ start script in packet Json use nodemon to debug mode : "start" : "nodemon (--in
 
 morgan ( log ) npm i morgan --save-dev
 Template engineer : npm install express-handlebars ( dung de su dung html de dang hon trong node )
+=>> replace thanh ejs npm install ejs
 
 # Structor
 
@@ -89,7 +90,7 @@ npm i bcrypt --save
   > ./source-base/Public/CSS/tailwind.css ( Định nghĩa trong package json - build:postcss -> npm run build:postcss)
 
 - Tailwindcomponents Cheatseet
-Page List component
+  Page List component
 
 # Tools- postcss
 
@@ -99,8 +100,9 @@ Page List component
   postcss.config.js
 
 # API cloud icon - cdnjs.com
+
 (font-awesome)
-*Recommend: Remix icon
+\*Recommend: Remix icon
 
 # HOSTING
 
@@ -123,3 +125,5 @@ npm install --save mysql2
 npx sequelize-cli db:migrate
 npx sequelize-cli seed:generate --name demo-user
 npx sequelize-cli db:seed:all
+
+ORM
