@@ -2,7 +2,6 @@ const { PDFDocument } = require('pdf-lib');
 const fs = require('fs').promises;
 const path = require('path');
 const multer = require('multer');
-var pdfTemp = '';
 class PdfToolController {
     pdfList(req,res) {
         res.render('pdf-tools');
@@ -11,6 +10,7 @@ class PdfToolController {
         res.render('pdf-split');
     }
     async pdfUpload(req, res) {
+        console.log(req.body)
         try {
             const upload = multer({
                 dest: 'source-base/Uploads/',
@@ -29,8 +29,8 @@ class PdfToolController {
                     return res.status(500).send('Internal Server Error');
                 }   
                 const pdfFilePath = req.file.path;
-                pdfTemp = pdfFilePath;
-                res.redirect(`/pdf-tools/pdf-split/option?pdfFilePath=${pdfFilePath}`);
+                // res.redirect(`/pdf-tools/pdf-split/option?pdfFilePath=${pdfFilePath}`);
+                return res.status(200).json({ pdfFilePath });
             });
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -45,7 +45,8 @@ class PdfToolController {
         try {
         const indexPageBasic = req.body.indexPageBasic;
         const indexPageSmart = req.body.indexPageSmart;
-        const pdfFilePath = pdfTemp;
+        const pdfFilePath = req.body.filePath;
+        console.log(indexPageBasic , ' +    ',indexPageSmart )
         const pagesToDelete = parseInput(indexPageBasic, indexPageSmart);
         console.log(pagesToDelete)
             const pdfData = await fs.readFile(pdfFilePath);
@@ -53,7 +54,7 @@ class PdfToolController {
             const pdfDoc = await PDFDocument.load(pdfDataArray);
             const totalPages = pdfDoc.getPageCount();
             if (pagesToDelete.some(pageNumber => pageNumber < 0 || pageNumber >= totalPages)) {
-                throw new Error(`Invalid page index. Please provide page indices within our format or range 0 to ${totalPages}`);
+                res.status(`Invalid page index. Please provide page indices within our format or range 0 to ${totalPages}`)
             }
             pagesToDelete.sort((a, b) => a - b);
             console.log(pagesToDelete)
@@ -69,16 +70,18 @@ class PdfToolController {
     
             await fs.writeFile(pdfFilePathWithExtension, modifiedPdfBytes);
             res.redirect(`/pdf-tools/pdf-split/download?file=${pdfFilePathWithExtension}`);
+            // res.status(200).json({pdfFilePathWithExtension});
         } catch (error) {
             return res.status(500).send(error.message);
         }
     }
     pdfSplit_Download(req,res) {
         const pdfFilePathWithExtension = req.query.file;
-        res.render('downloadPage', { pdfFilePathWithExtension });
+        res.status(200).json(pdfFilePathWithExtension);
+        // res.render('downloadPage', { pdfFilePathWithExtension });
     }
-    pdfSplit_SessionDownload(req,res){
-        const pdfFilePathWithExtension = req.query.file;    
+    pdfSplit_SessionDownload(req, res) {
+        const pdfFilePathWithExtension = req.body.filePath;
         res.download(pdfFilePathWithExtension, (err) => {
             if (err) {
                 console.error('Error downloading file:', err);

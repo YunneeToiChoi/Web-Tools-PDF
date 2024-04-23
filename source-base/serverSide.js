@@ -1,6 +1,7 @@
 // LIBRARIES BASE
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const connectDB = require('./config/connectDB');
@@ -11,6 +12,7 @@ const  { engine  }  = require('express-handlebars'); //structor file
 const route = require('./Routers/main.router')
 //RUNNING SERVER SIDE 
 const app = express();
+app.use(cors());
 //middle ware
 app.use(express.urlencoded({
   extends: true
