@@ -5,9 +5,9 @@ const userRouter = require('./user.router')
 function route(app){
     app.use('/news',newRouter)
     app.use('/searchs',sitesRouter)
+    app.use('/api-login',userRouter) 
     app.use('/pdf-tools',pdfToolsRouter)
     app.use('/',sitesRouter)    
-    app.use('/api-login',userRouter) 
 }
 
 module.exports = route;
