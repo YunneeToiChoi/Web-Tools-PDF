@@ -5,6 +5,11 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const connectDB = require('./config/connectDB');
+const cookieParser = require('cookie-parser'); // Thêm dòng này
+const corsOptions = {
+  origin: 'http://localhost:3000', // Chỉ định origin của ứng dụng frontend
+  credentials: true, // Cho phép gửi và nhận cookie trong các yêu cầu CORS
+};
 // LIBRARIES SUPPORTED
 const morgan = require('morgan'); // log 
 const  { engine  }  = require('express-handlebars'); //structor file
@@ -12,12 +17,13 @@ const  { engine  }  = require('express-handlebars'); //structor file
 const route = require('./Routers/main.router')
 //RUNNING SERVER SIDE 
 const app = express();
-app.use(cors());
 //middle ware
 app.use(express.urlencoded({
   extends: true
 })) // middleware
 app.use(express.json()) // middleware client -> server 
+app.use(cookieParser());
+app.use(cors(corsOptions));
 connectDB();
 /////
 //HTTP LOGGER
